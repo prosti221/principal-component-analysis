@@ -35,7 +35,7 @@ def pca(A,m):
     return pca_eigvec, P.T
 
 #Compression using PCA
-def pca_encode(A,m):
+def pca_compress(A,m):
     A_centered = center(A)
     cov = compute_cov(A_centered)
     eigval, eigvec = compute_eig(cov)
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     X,y,h,w = syntheticdata.get_lfw_data()
     plt.imshow(X[0,:].reshape((h, w)), cmap=plt.cm.gray)
 
-    X_comp = pca_encode(X,200)
+    X_comp = pca_compress(X,200)
     plt.imshow(X[0,:].reshape((h, w)), cmap=plt.cm.gray)
     plt.figure()
     plt.imshow(X_comp[0,:].reshape((h, w)), cmap=plt.cm.gray)
